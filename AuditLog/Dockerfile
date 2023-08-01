@@ -4,11 +4,11 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY AuditLog/*.csproj .
+COPY AuditLog/AuditLog/*.csproj .
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
-COPY AuditLog/. .
+COPY AuditLog/AuditLog/. .
 RUN dotnet publish --use-current-runtime --self-contained false --no-restore -o /app
 
 
